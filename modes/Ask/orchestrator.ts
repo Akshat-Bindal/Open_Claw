@@ -8,6 +8,7 @@ import { ToolExecutor } from "../Agent/tool-executor";
 import { defaultAgentConfig } from "../Agent/types";
 import { renderTerminalMarkdown } from "../../tui/terminal-md";
 import { runApprovalFlow } from "../Agent/approval";
+import { createWebTools } from "../Plan/web-tools";
 
 
     export function createAskTools(executor: ToolExecutor) {
@@ -93,6 +94,7 @@ import { runApprovalFlow } from "../Agent/approval";
 
         const tools={
             ...createAskTools(executor),
+            ...createWebTools(tracker),
         };
 
         const agent=new ToolLoopAgent({
